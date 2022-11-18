@@ -2,9 +2,6 @@ LOOP_DEPS=basicClassification.o advancedClassificationLoop.o utils.o
 %.o: %.c
 	gcc -Wall -fPIC -c $< -o $@
 
-%.so: %.o
-	gcc $< -shared -o $@
-
 libclassloops.a: $(LOOP_DEPS)
 	ar rcs $@ $^
 
@@ -17,11 +14,11 @@ recursives: libclassrec.a
 loopd: libclassloops.so
 recursived: libclassrec.so
 
-maindloop: loopd
-	gcc main.c -L. -lclassloops -o $@
+maindloop: main.c libclassloops.so
+	gcc $< -L. -lclassloops -o $@
 
-mainsloop: loops
-	gcc -v main.c -static -L. -lclassloops -o $@
+mainsloop: main.c libclassloops.a
+	gcc -v $< -static -L. -lclassloops -o $@
 
 maindrec: recursived
 

@@ -5,14 +5,14 @@
 int main(int argc, char *argv[]) {
     int from = atoi(argv[1]);
     int to = atoi(argv[2]);
-    printf("i\tprime?\tstrong?\tarmstrong?\tpalindrome?\n");
-    for (int i=from; i<=to; i++) {
+    printf("i\tprm?\tstrg?\tarm?\tpal?\n");
+    for (int i = from; i <= to; i++) {
         printf("%d\t%d\t%d\t%d\t%d\n",
-                i,
-                isPrime(i),
-                isStrong(i),
-                isArmstrong(i),
-                isPalindrome(i));
+               i,
+               isPrime(i),
+               isStrong(i),
+               isArmstrong(i),
+               isPalindrome(i));
     }
     return 0;
 }

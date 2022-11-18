@@ -1,7 +1,6 @@
 #include "NumClass.h"
 #include "utils.h"
 
-
 int isArmstrong(n) {
     return 0;
 }
