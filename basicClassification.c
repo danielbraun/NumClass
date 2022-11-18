@@ -2,17 +2,15 @@
 #include "utils.h"
 
 int isPrime(int n) {
-    int i, flag = 0;
     if (n == 0 || n == 1)
-        flag = 1;
+        return 1;
 
-    for (i = 2; i <= n / 2; ++i) {
+    for (int i = 2; i <= n / 2; i++) {
         if (n % i == 0) {
-            flag = 1;
-            break;
+            return 0;
         }
     }
-    return !flag;
+    return 1;
 }
 
 int isStrong(int x) {
