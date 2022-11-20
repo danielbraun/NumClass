@@ -1,28 +1,32 @@
 LOOP_DEPS=basicClassification.o advancedClassificationLoop.o utils.o
+RECUR_DEPS=basicClassification.o advancedClassificationRecursion.o utils.o
+COMPILE_A=ar rcs $@ $^
+COMPILE_SO=gcc $^ -shared -o $@
+EXECUTABLES=mains maindloop maindrec
+
 %.o: %.c
 	gcc -Wall -fPIC -c $< -o $@
 
-libclassloops.a: $(LOOP_DEPS)
-	ar rcs $@ $^
+libclassloops.a:  $(LOOP_DEPS);   $(COMPILE_A)
+libclassloops.so: $(LOOP_DEPS);   $(COMPILE_SO)
+libclassrec.a:    $(RECUR_DEPS);  $(COMPILE_A)
+libclassrec.so:   $(RECUR_DEPS);  $(COMPILE_SO)
 
-libclassloops.so: $(LOOP_DEPS)
-	gcc $^ -shared -o $@
-
-loops: libclassloops.a
+loops:      libclassloops.a
+loopd:      libclassloops.so
 recursives: libclassrec.a
-
-loopd: libclassloops.so
 recursived: libclassrec.so
 
-maindloop: main.c libclassloops.so
-	gcc $< -L. -lclassloops -o $@
+mains: main.o libclassrec.a
+	gcc $^ -lm -o $@
 
-mainsloop: main.c libclassloops.a
-	gcc -v $< -static -L. -lclassloops -o $@
+maindloop: main.o libclassloops.so
+	gcc $< -L. -lclassloops -lm -o $@
 
-maindrec: recursived
+maindrec: main.o libclassrec.so
+	gcc $< -L. -lclassrec -lm -o $@
 
-mains: recursives
 clean:
-	rm -f *.a *.o *.so
-all: maindrec maindloop mains
+	rm -f *.a *.o *.so $(EXECUTABLES)
+
+all: $(EXECUTABLES)
