@@ -10,11 +10,11 @@ int armstrong(int n, int digits) {
         return 0;
 }
 
-int isArmstrong(n) {
+int isArmstrong(int n) {
     return n == armstrong(n, digits(n));
 }
 
-int isPalindrome(n) {
+int isPalindrome(int n) {
     int exp = (int) pow(10, digits(n) - 1); // eg. 23233 -> 10000
     if (n < 10)
         return 1;

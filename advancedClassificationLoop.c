@@ -3,7 +3,7 @@
 #include "utils.h"
 #include "NumClass.h"
 
-int isArmstrong(n) {
+int isArmstrong(int n) {
     int sum = 0;
     for (int i = 0; i < digits(n); i++) {
         sum += pow(nthdig(n, i), digits(n));
@@ -11,7 +11,7 @@ int isArmstrong(n) {
     return sum == n;
 }
 
-int isPalindrome(n) {
+int isPalindrome(int n) {
     int remainder, temp = n, sum = 0;
 
     while (temp > 0) {
