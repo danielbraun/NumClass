@@ -4,6 +4,7 @@ COMPILE_A=ar rcs $@ $^
 COMPILE_SO=gcc $^ -shared -o $@
 EXECUTABLES=mains maindloop maindrec
 
+
 %.o: %.c
 	gcc -Wall -fPIC -c $< -o $@
 
