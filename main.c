@@ -2,17 +2,25 @@
 #include <stdlib.h>
 #include "NumClass.h"
 
-int main(int argc, char *argv[]) {
-    int from = atoi(argv[1]);
-    int to = atoi(argv[2]);
-    printf("i\tprm?\tstrg?\tarm?\tpal?\n");
-    for (int i = from; i <= to; i++) {
-        printf("%d\t%d\t%d\t%d\t%d\n",
-               i,
-               isPrime(i),
-               isStrong(i),
-               isArmstrong(i),
-               isPalindrome(i));
-    }
+int main() {
+    int from, to, i;
+    fscanf(stdin,"%d %d", &from, &to);
+
+    printf("The Armstrong numbers are:");
+    for (i = from; i <= to; i++) if (isArmstrong(i)) printf(" %d", i);
+    printf("\n");
+
+    printf("The Palindromes are:");
+    for (i = from; i <= to; i++) if (isPalindrome(i)) printf(" %d", i);
+    printf("\n");
+
+    printf("The Prime numbers are:");
+    for (i = from; i <= to; i++) if (isPrime(i)) printf(" %d", i);
+    printf("\n");
+
+    printf("The Strong numbers are:");
+    for (i = from; i <= to; i++) if (isStrong(i)) printf(" %d", i);
+    printf("\n");
+
     return 0;
 }
