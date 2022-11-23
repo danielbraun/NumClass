@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "NumClass.h"
 
 int main() {
     int from, to, i;
-    fscanf(stdin,"%d %d", &from, &to);
+    scanf("%d %d", &from, &to);
 
     printf("The Armstrong numbers are:");
     for (i = from; i <= to; i++) if (isArmstrong(i)) printf(" %d", i);

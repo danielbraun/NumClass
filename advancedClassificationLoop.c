@@ -1,14 +1,16 @@
-#include <stdio.h>
-#include <math.h>
-#include "utils.h"
 #include "NumClass.h"
+#include <math.h>
 
 int isArmstrong(int n) {
-    int sum = 0;
-    for (int i = 0; i < digits(n); i++) {
-        sum += pow(nthdig(n, i), digits(n));
+    int sum = 0,
+        original = n,
+        digits = ((int) log10(n)) + 1;
+
+    while (n > 0) {
+        sum += pow(n % 10, digits);
+        n = n / 10;
     }
-    return sum == n;
+    return original == sum;
 }
 
 int isPalindrome(int n) {

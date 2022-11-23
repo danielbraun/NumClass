@@ -1,39 +1,18 @@
 #include "NumClass.h"
 #include <math.h>
-#include <stdio.h>
-#include "utils.h"
 
 int armstrong(int n, int digits) {
-    if (n > 0)
-        return pow(n % 10, digits) + armstrong(n / 10, digits);
-    else
-        return 0;
+    return (n > 0) ? pow(n % 10, digits) + armstrong(n / 10, digits) : 0;
 }
 
 int isArmstrong(int n) {
-    return n == armstrong(n, digits(n));
+    return n == armstrong(n, ((int)log10(n)) + 1);
+}
+
+int reverseNumber(int n) {
+    return (n < 10) ? n : (n % 10) * pow(10, (int)log10(n)) + reverseNumber(n/10);
 }
 
 int isPalindrome(int n) {
-    int exp = (int) pow(10, digits(n) - 1); // eg. 23233 -> 10000
-    if (n < 10)
-        return 1;
-    else
-        return ((n % 10) == n / exp) && isPalindrome(n % exp / 10);
+    return n == reverseNumber(n);
 }
-
-/*
-int main() {
-    // printf("%d\n", isArmstrong(407));
-    // printf("%d\n", isArmstrong(406));
-    printf("%d\n", isPalindrome(5));
-    printf("%d\n", isPalindrome(11));
-    printf("%d\n", isPalindrome(4447444));
-    printf("%d\n", isPalindrome(736357));
-    printf("%d\n", isPalindrome(736352));
-    printf("%d\n", isPalindrome(73352));
-    printf("%d\n", isPalindrome(1234321));
-    printf("%d\n", isPalindrome(12344321));
-
-}
-*/

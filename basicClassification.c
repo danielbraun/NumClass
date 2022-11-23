@@ -1,5 +1,12 @@
-#include <stdio.h>
-#include "utils.h"
+#include "NumClass.h"
+
+int factorial(int n) {
+    int res = 1;
+    for (int i = 1; i <= n; i++) {
+        res = res * i;
+    }
+    return res;
+}
 
 int isPrime(int n) {
     if (n == 0 || n == 1)
@@ -13,10 +20,11 @@ int isPrime(int n) {
     return 1;
 }
 
-int isStrong(int x) {
-    int sum = 0;
-    for (int i = 0; i < digits(x); i++) {
-        sum += factorial(nthdig(x, i));
+int isStrong(int n) {
+    int sum = 0, original = n;
+    while (n > 0) {
+        sum += factorial(n % 10);
+        n = n / 10;
     }
-    return sum == x;
+    return sum == original;
 }
