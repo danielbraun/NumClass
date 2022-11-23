@@ -30,4 +30,4 @@ maindrec: main.o libclassrec.so
 clean:
 	rm -f *.a *.o *.so $(EXECUTABLES)
 
-all: $(EXECUTABLES)
+all: $(EXECUTABLES) loops
