@@ -1,5 +1,5 @@
-LOOP_DEPS=basicClassification.o advancedClassificationLoop.o utils.o
-RECUR_DEPS=basicClassification.o advancedClassificationRecursion.o utils.o
+LOOP_DEPS=basicClassification.o advancedClassificationLoop.o
+RECUR_DEPS=basicClassification.o advancedClassificationRecursion.o
 COMPILE_A=ar rcs $@ $^
 COMPILE_SO=gcc $^ -shared -o $@
 EXECUTABLES=mains maindloop maindrec
